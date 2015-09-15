@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.MIUS</groupId>
+    <artifactId>JavaJaxRSMicroService</artifactId>
+    <version>1.0-SNAPSHOT</version>
+ 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+    
+    <name> Java Microservice for Docker</name>
+    <description> Houston Tech Fest Java Microservice for Docker Example </description>
+    <packaging>jar</packaging>
+    
+    <dependencies>
+        <!-- Add wildfly.swarm to the dependencies for the project -->
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
+            <version>1.0.0.Alpha5-SNAPSHOT</version>
+        </dependency>
+         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.2</version>
+        </dependency>
+        <dependency>
+             <groupId>com.googlecode.json-simple</groupId>
+             <artifactId> json-simple</artifactId>
+             <version>1.1</version>
+        </dependency>
+
+        <!-- Simplified logging -->
+        <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-log4j12</artifactId>
+             <version>1.7.5</version>
+        </dependency>
+
+    </dependencies>
+    
+    <build>
+        <finalName>JavaMSDocker</finalName>
+        <plugins>
+            <!-- Maven plugins -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                  <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+          </plugin>
+          <!-- *** Swarm Plugin *** -->
+          <!-- Specify the main class in your  app -->
+          <!-- Executution phase and goal -->
+        <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+        <configuration>
+          <mainClass>com.mius.javajaxrsmicroservice.JaxRSServriceSwarmMain</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
+        </plugin>   
+        </plugins>
+    </build>
+</project>

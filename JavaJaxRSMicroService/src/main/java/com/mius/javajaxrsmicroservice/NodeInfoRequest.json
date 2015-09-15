@@ -1,0 +1,6 @@
+{
+     "jsonrpc": "1.0",
+      "id":"curltext",
+      "method": "getblockcount",
+      "params": []
+}

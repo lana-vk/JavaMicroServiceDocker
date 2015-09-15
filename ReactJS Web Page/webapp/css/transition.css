@@ -1,0 +1,46 @@
+.example-enter,
+.example-leave {
+  -webkit-transition: all .25s;
+  transition: all .25s;
+}
+
+.example-enter,
+.example-leave.example-leave-active {
+  opacity: 0.01;
+}
+
+.example-leave.example-leave-active {
+  margin-left: -200px;
+}
+
+.example-enter {
+  margin-left: 200px;
+}
+
+.example-enter.example-enter-active,
+.example-leave {
+  margin-left: 0;
+  opacity: 1;
+}
+
+.animateExample {
+  display: block;
+  height: 450px;
+  position: relative;
+  width: 600px;
+}
+
+.animateItem {
+  color: white;
+  font-size: 12px;
+  height: 250px;
+  line-height: 10px;
+  position: absolute;
+  text-align: left;
+  text-overflow-mode:ellipsis-word;
+  padding-left:10;
+  padding-right:10;
+  -webkit-transition: all .25s; /* TODO: make this a move animation */
+  transition: all .25s; /* TODO: make this a move animation */
+  width: 200px;
+}
